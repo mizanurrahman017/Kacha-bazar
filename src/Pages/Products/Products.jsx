@@ -8,7 +8,7 @@ const productData = [
     category: "Vegetable",
     market: "Karwan Bazar",
     price: 45,
-    image: "https://source.unsplash.com/600x400/?potato",
+    image: "/public/Potatoes.jpg",
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const productData = [
     category: "Vegetable",
     market: "New Market",
     price: 60,
-    image: "https://source.unsplash.com/600x400/?onion",
+    image: "/public/onion.jpg",
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const productData = [
     category: "Fish",
     market: "Local Market",
     price: 1200,
-    image: "https://source.unsplash.com/600x400/?fish",
+    image: "/public/ilisha.jpg",
   },
   {
     id: 4,
@@ -32,7 +32,7 @@ const productData = [
     category: "Vegetable",
     market: "Karwan Bazar",
     price: 50,
-    image: "https://source.unsplash.com/600x400/?spring-onion",
+    image: "/public/spring.jpg",
   },
   {
     id: 5,
@@ -40,7 +40,7 @@ const productData = [
     category: "Vegetable",
     market: "New Market",
     price: 55,
-    image: "https://source.unsplash.com/600x400/?tomato",
+    image: "/public/tomatos.jpg",
   },
   {
     id: 6,
@@ -48,7 +48,7 @@ const productData = [
     category: "Vegetable",
     market: "Local Market",
     price: 40,
-    image: "https://source.unsplash.com/600x400/?carrot",
+    image: "/public/carrot.jpg",
   },
   {
     id: 7,
@@ -56,7 +56,7 @@ const productData = [
     category: "Vegetable",
     market: "Karwan Bazar",
     price: 35,
-    image: "https://source.unsplash.com/600x400/?cabbage",
+    image: "/public/cabbage.webp",
   },
   {
     id: 8,
@@ -64,7 +64,7 @@ const productData = [
     category: "Fish",
     market: "New Market",
     price: 450,
-    image: "https://source.unsplash.com/600x400/?rohu-fish",
+    image: "/public/Rohu.jpg",
   },
   {
     id: 9,
@@ -72,7 +72,7 @@ const productData = [
     category: "Vegetable",
     market: "Local Market",
     price: 65,
-    image: "https://source.unsplash.com/600x400/?eggplant",
+    image: "/public/Brinjal.jpg",
   },
   {
     id: 10,
@@ -80,7 +80,7 @@ const productData = [
     category: "Vegetable",
     market: "Karwan Bazar",
     price: 30,
-    image: "https://source.unsplash.com/600x400/?pumpkin",
+    image: "/public/pumpkin.jpg",
   },
 ];
 
