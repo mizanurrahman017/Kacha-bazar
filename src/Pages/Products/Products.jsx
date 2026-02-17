@@ -8,7 +8,7 @@ const productData = [
     category: "Vegetable",
     market: "Karwan Bazar",
     price: 45,
-    image: "/public/Potatoes.jpg",
+    image: "/Potatoes.jpg",
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const productData = [
     category: "Vegetable",
     market: "New Market",
     price: 60,
-    image: "/public/onion.jpg",
+    image: "/onion.jpg",
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const productData = [
     category: "Fish",
     market: "Local Market",
     price: 1200,
-    image: "/public/ilisha.jpg",
+    image: "/ilisha.jpg",
   },
   {
     id: 4,
@@ -32,7 +32,7 @@ const productData = [
     category: "Vegetable",
     market: "Karwan Bazar",
     price: 50,
-    image: "/public/spring.jpg",
+    image: "/spring.jpg",
   },
   {
     id: 5,
@@ -40,7 +40,7 @@ const productData = [
     category: "Vegetable",
     market: "New Market",
     price: 55,
-    image: "/public/tomatos.jpg",
+    image: "/tomatos.jpg",
   },
   {
     id: 6,
@@ -48,7 +48,7 @@ const productData = [
     category: "Vegetable",
     market: "Local Market",
     price: 40,
-    image: "/public/carrot.jpg",
+    image: "/carrot.jpg",
   },
   {
     id: 7,
@@ -56,7 +56,7 @@ const productData = [
     category: "Vegetable",
     market: "Karwan Bazar",
     price: 35,
-    image: "/public/cabbage.webp",
+    image: "/cabbage.webp",
   },
   {
     id: 8,
@@ -64,7 +64,7 @@ const productData = [
     category: "Fish",
     market: "New Market",
     price: 450,
-    image: "/public/Rohu.jpg",
+    image: "/Rohu.jpg",
   },
   {
     id: 9,
@@ -72,7 +72,7 @@ const productData = [
     category: "Vegetable",
     market: "Local Market",
     price: 65,
-    image: "/public/Brinjal.jpg",
+    image: "/Brinjal.jpg",
   },
   {
     id: 10,
@@ -80,7 +80,7 @@ const productData = [
     category: "Vegetable",
     market: "Karwan Bazar",
     price: 30,
-    image: "/public/pumpkin.jpg",
+    image: "/pumpkin.jpg",
   },
 ];
 

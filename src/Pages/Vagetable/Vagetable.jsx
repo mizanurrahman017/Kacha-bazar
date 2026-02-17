@@ -4,7 +4,7 @@ const Vagetable = ({ addToCart }) => {
   const vegetables = [
     {
       name: "Broccoli",
-      image: "https://images.unsplash.com/photo-1582515073490-dc2c8b1b8a8b",
+      image: "/broccoli.jpg",
       market: "Local Market",
       price: "৳120 / kg",
     },
@@ -22,7 +22,7 @@ const Vagetable = ({ addToCart }) => {
     },
     {
       name: "Potato",
-      image: "https://images.unsplash.com/photo-1589927986089-35812388d1f4",
+      image: "/Potatoes.jpg",
       market: "Local Market",
       price: "৳50 / kg",
     },

@@ -10,13 +10,13 @@ const Fish = ({ addToCart }) => {
     },
     {
       name: "Rohu Fish",
-      image: "https://images.unsplash.com/photo-1544943910-4c1dc44aab44",
+      image: "/Rohu.jpg",
       market: "KachaBazar Market",
       price: "৳350 / kg",
     },
     {
       name: "Chicken",
-      image: "https://images.unsplash.com/photo-1604908554007-5f7b0e5f9d3c",
+      image: "/chicken.webp",
       market: "KachaBazar Market",
       price: "৳220 / kg",
     },
@@ -64,7 +64,7 @@ const Fish = ({ addToCart }) => {
 
                 <button
                   onClick={() => addToCart && addToCart(item)}
-                  className="mt-4 w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition"
+                  className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-red-700 transition"
                 >
                   Add to Cart 🛒
                 </button>

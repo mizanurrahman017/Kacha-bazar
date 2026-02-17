@@ -4,7 +4,7 @@ const Bakery = ({ addToCart }) => {
   const items = [
     {
       name: "Fresh Milk",
-      image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b",
+      image: "/milk.webp",
       market: "KachaBazar Market",
       price: "৳90 / litre",
     },
@@ -16,13 +16,13 @@ const Bakery = ({ addToCart }) => {
     },
     {
       name: "White Bread",
-      image: "https://images.unsplash.com/photo-1608198093002-ad4e005484ec",
+      image: "/whitebread.webp",
       market: "KachaBazar Market",
       price: "৳60 / pack",
     },
     {
       name: "Butter",
-      image: "https://images.unsplash.com/photo-1589987607627-25d3b1f6e3c3",
+      image: "/Butter.webp",
       market: "KachaBazar Market",
       price: "৳180 / pack",
     },
@@ -64,7 +64,7 @@ const Bakery = ({ addToCart }) => {
 
                 <button
                   onClick={() => addToCart && addToCart(item)}
-                  className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+                  className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
                 >
                   Add to Cart 🛒
                 </button>

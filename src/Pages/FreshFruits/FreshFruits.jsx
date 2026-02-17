@@ -10,13 +10,13 @@ const FreshFruits = () => {
     },
     {
       name: "Banana",
-      image: "https://images.unsplash.com/photo-1574226516831-e1dff420e8f8",
+      image: "/banana.jpg",
       market: "KachaBazar Market",
       price: "৳60 / dozen",
     },
     {
       name: "Orange",
-      image: "https://images.unsplash.com/photo-1580910051074-3eb694886505",
+      image: "/orange.jpg",
       market: "KachaBazar Market",
       price: "৳180 / kg",
     },
