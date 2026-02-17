@@ -24,13 +24,14 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     await signOut(auth);
+    setMobileMenu(false);
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full relative">
 
       {/* Top Bar */}
-      <div className="bg-slate-900 text-white text-xs md:text-sm py-2 px-4 md:px-6 flex justify-between">
+      <div className="bg-slate-900 text-white text-xs md:text-sm py-2 px-4 md:px-6 flex justify-between items-center">
         <p className="hidden md:block">
           We are available 24/7, Need help? Call Us:
           <span className="text-green-400 font-semibold ml-2">
@@ -43,7 +44,6 @@ const Navbar = () => {
           <NavLink to="/account">My Account</NavLink>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenu(!mobileMenu)}
           className="md:hidden"
@@ -66,6 +66,7 @@ const Navbar = () => {
             Home
           </NavLink>
 
+          {/* Categories Dropdown */}
           <div className="relative">
             <button
               onClick={() => setOpen(!open)}
@@ -75,7 +76,7 @@ const Navbar = () => {
             </button>
 
             {open && (
-              <div className="absolute top-10 left-0 bg-white border rounded-lg shadow-lg w-48 z-50">
+              <div className="absolute top-10 left-0 bg-white border rounded-lg shadow-lg w-52 z-50">
                 <NavLink to="/category/fruits" className="block px-4 py-2 hover:bg-gray-100">
                   Fresh Fruits
                 </NavLink>
@@ -111,18 +112,18 @@ const Navbar = () => {
         <div className="flex items-center space-x-4">
 
           {/* Cart */}
-          <div className="relative">
+          <div className="relative cursor-pointer">
             <ShoppingCart size={22} />
-            <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-1 rounded-full">
+            <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-1.5 rounded-full">
               0
             </span>
           </div>
 
-          {/* User */}
+          {/* Auth */}
           {user ? (
             <button
               onClick={handleLogout}
-              className="text-sm bg-red-500 text-white px-3 py-1 rounded hidden md:block"
+              className="hidden md:block text-sm bg-red-500 text-white px-3 py-1 rounded-lg"
             >
               Logout
             </button>
@@ -137,61 +138,110 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* 🔥 Mobile Menu Dropdown */}
-      {mobileMenu && (
-        <div className="md:hidden bg-white shadow-md px-4 py-4 space-y-4 font-medium">
+      {/* 🔥 Mobile Dropdown Menu */}
+      <div
+        className={`md:hidden absolute w-full bg-white shadow-lg transition-all duration-300 overflow-hidden ${
+          mobileMenu ? "max-h-[600px] py-6 px-4" : "max-h-0"
+        }`}
+      >
+        <div className="space-y-6 font-medium">
 
-          <NavLink to="/" onClick={() => setMobileMenu(false)}>
-            Home
-          </NavLink>
+          {/* Main Section */}
+          <div className="space-y-3">
+            <p className="text-xs text-gray-400 uppercase tracking-wider">
+              Main Menu
+            </p>
 
-          <NavLink to="/products" onClick={() => setMobileMenu(false)}>
-            Products
-          </NavLink>
+            <NavLink
+              to="/"
+              onClick={() => setMobileMenu(false)}
+              className="block py-2 border-b hover:text-green-600"
+            >
+              Home
+            </NavLink>
 
-          <NavLink to="/category/fruits" onClick={() => setMobileMenu(false)}>
-            Fresh Fruits
-          </NavLink>
-
-          <NavLink to="/category/vegetables" onClick={() => setMobileMenu(false)}>
-            Vegetables
-          </NavLink>
-
-          <NavLink to="/category/fish" onClick={() => setMobileMenu(false)}>
-            Fish & Meat
-          </NavLink>
-
-          <NavLink to="/category/dairy" onClick={() => setMobileMenu(false)}>
-            Dairy & Bakery
-          </NavLink>
-
-          {/* Mobile Search */}
-          <div className="flex items-center bg-gray-100 rounded-full px-4 py-2">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="bg-transparent outline-none flex-1 text-sm"
-            />
-            <Search size={18} />
+            <NavLink
+              to="/products"
+              onClick={() => setMobileMenu(false)}
+              className="block py-2 border-b hover:text-green-600"
+            >
+              Products
+            </NavLink>
           </div>
 
-          {user ? (
-            <button
-              onClick={handleLogout}
-              className="w-full bg-red-500 text-white py-2 rounded"
-            >
-              Logout
-            </button>
-          ) : (
+          {/* Categories Section */}
+          <div className="space-y-3">
+            <p className="text-xs text-gray-400 uppercase tracking-wider">
+              Categories
+            </p>
+
             <NavLink
-              to="/login"
-              className="block text-center bg-green-500 text-white py-2 rounded"
+              to="/category/fruits"
+              onClick={() => setMobileMenu(false)}
+              className="block py-2 border-b hover:text-green-600"
             >
-              Login
+              🍎 Fresh Fruits
             </NavLink>
-          )}
+
+            <NavLink
+              to="/category/vegetables"
+              onClick={() => setMobileMenu(false)}
+              className="block py-2 border-b hover:text-green-600"
+            >
+              🥦 Vegetables
+            </NavLink>
+
+            <NavLink
+              to="/category/fish"
+              onClick={() => setMobileMenu(false)}
+              className="block py-2 border-b hover:text-green-600"
+            >
+              🐟 Fish & Meat
+            </NavLink>
+
+            <NavLink
+              to="/category/dairy"
+              onClick={() => setMobileMenu(false)}
+              className="block py-2 border-b hover:text-green-600"
+            >
+              🥛 Dairy & Bakery
+            </NavLink>
+          </div>
+
+          {/* Search */}
+          <div>
+            <div className="flex items-center bg-gray-100 rounded-full px-4 py-2">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="bg-transparent outline-none flex-1 text-sm"
+              />
+              <Search size={18} />
+            </div>
+          </div>
+
+          {/* Auth */}
+          <div>
+            {user ? (
+              <button
+                onClick={handleLogout}
+                className="w-full bg-red-500 text-white py-2 rounded-lg"
+              >
+                Logout
+              </button>
+            ) : (
+              <NavLink
+                to="/login"
+                onClick={() => setMobileMenu(false)}
+                className="block text-center bg-green-500 text-white py-2 rounded-lg"
+              >
+                Login
+              </NavLink>
+            )}
+          </div>
+
         </div>
-      )}
+      </div>
     </div>
   );
 };
