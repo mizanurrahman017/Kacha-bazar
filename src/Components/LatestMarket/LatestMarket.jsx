@@ -34,34 +34,34 @@ const LatestMarket = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-12">
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      
       {/* Header */}
-      <div className="flex justify-between items-center mb-10">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-2xl md:text-3xl font-bold leading-snug">
             Latest Market News & Alerts
           </h1>
-          <p className="text-gray-500 mt-2">
+          <p className="text-gray-500 mt-1 text-sm md:text-base">
             Stay updated with daily market changes
           </p>
         </div>
 
-        {/* Bell Icon */}
-        <FaBell className="text-green-600 text-2xl cursor-pointer hover:scale-110 transition" />
+        <FaBell className="text-green-600 text-xl md:text-2xl cursor-pointer hover:scale-110 transition" />
       </div>
 
       {/* News Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {news.map((item) => (
           <div
             key={item.id}
-            className="border rounded-2xl p-6 bg-white hover:shadow-lg transition duration-300"
+            className="border rounded-xl p-5 bg-white hover:shadow-lg transition duration-300"
           >
-            <h2 className="font-semibold text-lg mb-3">
+            <h2 className="font-semibold text-base md:text-lg mb-2 break-words leading-snug">
               {item.title}
             </h2>
 
-            <p className="text-gray-600 text-sm mb-6">
+            <p className="text-gray-600 text-sm mb-4">
               {item.description}
             </p>
 

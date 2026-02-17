@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router";
 import {
   ShoppingCart,
   Search,
@@ -24,14 +24,13 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     await signOut(auth);
-    setMobileMenu(false);
   };
 
   return (
-    <div className="w-full sticky top-0 z-50 bg-white">
+    <div className="w-full">
 
       {/* Top Bar */}
-      <div className="bg-slate-900 text-white text-xs md:text-sm py-2 px-4 md:px-6 flex justify-between items-center">
+      <div className="bg-slate-900 text-white text-xs md:text-sm py-2 px-4 md:px-6 flex justify-between">
         <p className="hidden md:block">
           We are available 24/7, Need help? Call Us:
           <span className="text-green-400 font-semibold ml-2">
@@ -44,6 +43,7 @@ const Navbar = () => {
           <NavLink to="/account">My Account</NavLink>
         </div>
 
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenu(!mobileMenu)}
           className="md:hidden"
@@ -56,10 +56,7 @@ const Navbar = () => {
       <div className="bg-gray-100 px-4 md:px-6 py-4 flex items-center justify-between">
 
         {/* Logo */}
-        <NavLink
-          to="/"
-          className="text-xl md:text-2xl font-bold text-green-600"
-        >
+        <NavLink to="/" className="text-xl md:text-2xl font-bold text-green-600">
           Kacha<span className="text-black">Bazer</span>
         </NavLink>
 
@@ -69,7 +66,6 @@ const Navbar = () => {
             Home
           </NavLink>
 
-          {/* Categories Dropdown */}
           <div className="relative">
             <button
               onClick={() => setOpen(!open)}
@@ -79,29 +75,17 @@ const Navbar = () => {
             </button>
 
             {open && (
-              <div className="absolute top-10 left-0 bg-white border rounded-lg shadow-lg w-52 z-50">
-                <NavLink
-                  to="/category/fruits"
-                  className="block px-4 py-2 hover:bg-gray-100"
-                >
+              <div className="absolute top-10 left-0 bg-white border rounded-lg shadow-lg w-48 z-50">
+                <NavLink to="/category/fruits" className="block px-4 py-2 hover:bg-gray-100">
                   Fresh Fruits
                 </NavLink>
-                <NavLink
-                  to="/category/vegetables"
-                  className="block px-4 py-2 hover:bg-gray-100"
-                >
+                <NavLink to="/category/vegetables" className="block px-4 py-2 hover:bg-gray-100">
                   Vegetables
                 </NavLink>
-                <NavLink
-                  to="/category/fish"
-                  className="block px-4 py-2 hover:bg-gray-100"
-                >
+                <NavLink to="/category/fish" className="block px-4 py-2 hover:bg-gray-100">
                   Fish & Meat
                 </NavLink>
-                <NavLink
-                  to="/category/dairy"
-                  className="block px-4 py-2 hover:bg-gray-100"
-                >
+                <NavLink to="/category/dairy" className="block px-4 py-2 hover:bg-gray-100">
                   Dairy & Bakery
                 </NavLink>
               </div>
@@ -127,18 +111,18 @@ const Navbar = () => {
         <div className="flex items-center space-x-4">
 
           {/* Cart */}
-          <div className="relative cursor-pointer">
+          <div className="relative">
             <ShoppingCart size={22} />
-            <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-1.5 rounded-full">
+            <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-1 rounded-full">
               0
             </span>
           </div>
 
-          {/* Auth */}
+          {/* User */}
           {user ? (
             <button
               onClick={handleLogout}
-              className="hidden md:block text-sm bg-red-500 text-white px-3 py-1 rounded-lg"
+              className="text-sm bg-red-500 text-white px-3 py-1 rounded hidden md:block"
             >
               Logout
             </button>
@@ -153,102 +137,59 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* 🔥 Mobile Dropdown (No Absolute, No Overlap) */}
+      {/* 🔥 Mobile Menu Dropdown */}
       {mobileMenu && (
-        <div className="md:hidden bg-white shadow-md px-4 py-6">
-          <div className="space-y-6 font-medium">
+        <div className="md:hidden bg-white shadow-md px-4 py-4 space-y-4 font-medium">
 
-            {/* Main Section */}
-            <div className="space-y-3">
-              <p className="text-xs text-gray-400 uppercase">
-                Main Menu
-              </p>
+          <NavLink to="/" onClick={() => setMobileMenu(false)}>
+            Home
+          </NavLink>
 
-              <NavLink
-                to="/"
-                onClick={() => setMobileMenu(false)}
-                className="block py-3 border-b hover:text-green-600"
-              >
-                Home
-              </NavLink>
+          <NavLink to="/products" onClick={() => setMobileMenu(false)}>
+            Products
+          </NavLink>
 
-              <NavLink
-                to="/products"
-                onClick={() => setMobileMenu(false)}
-                className="block py-3 border-b hover:text-green-600"
-              >
-                Products
-              </NavLink>
-            </div>
+          <NavLink to="/category/fruits" onClick={() => setMobileMenu(false)}>
+            Fresh Fruits
+          </NavLink>
 
-            {/* Categories */}
-            <div className="space-y-3">
-              <p className="text-xs text-gray-400 uppercase">
-                Categories
-              </p>
+          <NavLink to="/category/vegetables" onClick={() => setMobileMenu(false)}>
+            Vegetables
+          </NavLink>
 
-              <NavLink
-                to="/category/fruits"
-                onClick={() => setMobileMenu(false)}
-                className="block py-3 border-b hover:text-green-600"
-              >
-                Fresh Fruits
-              </NavLink>
+          <NavLink to="/category/fish" onClick={() => setMobileMenu(false)}>
+            Fish & Meat
+          </NavLink>
 
-              <NavLink
-                to="/category/vegetables"
-                onClick={() => setMobileMenu(false)}
-                className="block py-3 border-b hover:text-green-600"
-              >
-                Vegetables
-              </NavLink>
+          <NavLink to="/category/dairy" onClick={() => setMobileMenu(false)}>
+            Dairy & Bakery
+          </NavLink>
 
-              <NavLink
-                to="/category/fish"
-                onClick={() => setMobileMenu(false)}
-                className="block py-3 border-b hover:text-green-600"
-              >
-                Fish & Meat
-              </NavLink>
-
-              <NavLink
-                to="/category/dairy"
-                onClick={() => setMobileMenu(false)}
-                className="block py-3 border-b hover:text-green-600"
-              >
-                Dairy & Bakery
-              </NavLink>
-            </div>
-
-            {/* Search */}
-            <div className="flex items-center bg-gray-100 rounded-full px-4 py-3">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="bg-transparent outline-none flex-1 text-sm"
-              />
-              <Search size={18} />
-            </div>
-
-            {/* Auth */}
-            {user ? (
-              <button
-                onClick={handleLogout}
-                className="w-full bg-red-500 text-white py-3 rounded-lg"
-              >
-                Logout
-              </button>
-            ) : (
-              <NavLink
-                to="/login"
-                onClick={() => setMobileMenu(false)}
-                className="block text-center bg-green-500 text-white py-3 rounded-lg"
-              >
-                Login
-              </NavLink>
-            )}
-
+          {/* Mobile Search */}
+          <div className="flex items-center bg-gray-100 rounded-full px-4 py-2">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="bg-transparent outline-none flex-1 text-sm"
+            />
+            <Search size={18} />
           </div>
+
+          {user ? (
+            <button
+              onClick={handleLogout}
+              className="w-full bg-red-500 text-white py-2 rounded"
+            >
+              Logout
+            </button>
+          ) : (
+            <NavLink
+              to="/login"
+              className="block text-center bg-green-500 text-white py-2 rounded"
+            >
+              Login
+            </NavLink>
+          )}
         </div>
       )}
     </div>
