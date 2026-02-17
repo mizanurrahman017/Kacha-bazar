@@ -15,7 +15,7 @@ const slides = [
   },
   {
     id: 3,
-    image: "/public/Fish.jpg",
+    image: "/Fish.jpg",
     title: "Smart Shopping Decisions",
     desc: "Decide when to buy with accurate price insights",
   },
