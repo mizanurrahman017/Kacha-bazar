@@ -1,9 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router";
 import { ShoppingCart, Search, ChevronDown } from "lucide-react";
+import { auth } from "../../firebase/firebase.config";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [user, setUser] = useState(null);
+
+  // 🔥 user detect
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    await signOut(auth);
+  };
 
   return (
     <div className="w-full">
@@ -18,7 +34,6 @@ const Navbar = () => {
         </p>
 
         <div className="space-x-6 hidden md:flex">
-          <NavLink to="/about">About Us</NavLink>
           <NavLink to="/contact">Contact Us</NavLink>
           <NavLink to="/account">My Account</NavLink>
         </div>
@@ -114,19 +129,48 @@ const Navbar = () => {
             </span>
           </div>
 
-          <NavLink
-            to="/login"
-            className="font-medium hover:text-green-600"
-          >
-            Login
-          </NavLink>
+          {/* 🔥 User Section */}
+          {user ? (
+            <div className="flex items-center gap-3">
 
-          <NavLink
-            to="/register"
-            className="border border-green-500 text-green-600 px-4 py-1 rounded-full hover:bg-green-500 hover:text-white transition"
-          >
-            Register
-          </NavLink>
+              <span className="hidden md:block font-medium">
+                {user.displayName || "User"}
+              </span>
+
+              <img
+                src={
+                  user.photoURL ||
+                  "https://i.ibb.co/4pDNDk1/avatar.png"
+                }
+                alt="user"
+                className="w-9 h-9 rounded-full border-2 border-green-500"
+              />
+
+              <button
+                onClick={handleLogout}
+                className="text-sm bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+              >
+                Logout
+              </button>
+
+            </div>
+          ) : (
+            <>
+              <NavLink
+                to="/login"
+                className="font-medium hover:text-green-600"
+              >
+                Login
+              </NavLink>
+
+              <NavLink
+                to="/register"
+                className="border border-green-500 text-green-600 px-4 py-1 rounded-full hover:bg-green-500 hover:text-white transition"
+              >
+                Register
+              </NavLink>
+            </>
+          )}
 
         </div>
       </div>

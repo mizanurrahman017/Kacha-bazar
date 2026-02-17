@@ -8,8 +8,7 @@ const productData = [
     category: "Vegetable",
     market: "Karwan Bazar",
     price: 45,
-    rating: 4.2,
-    image: "https://images.unsplash.com/photo-1582515073490-dc4d3c9c4e4b",
+    image: "https://source.unsplash.com/600x400/?potato",
   },
   {
     id: 2,
@@ -17,8 +16,7 @@ const productData = [
     category: "Vegetable",
     market: "New Market",
     price: 60,
-    rating: 4.5,
-    image: "https://images.unsplash.com/photo-1508747703725-719777637510",
+    image: "https://source.unsplash.com/600x400/?onion",
   },
   {
     id: 3,
@@ -26,8 +24,63 @@ const productData = [
     category: "Fish",
     market: "Local Market",
     price: 1200,
-    rating: 4.8,
-    image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d",
+    image: "https://source.unsplash.com/600x400/?fish",
+  },
+  {
+    id: 4,
+    name: "Spring Onion",
+    category: "Vegetable",
+    market: "Karwan Bazar",
+    price: 50,
+    image: "https://source.unsplash.com/600x400/?spring-onion",
+  },
+  {
+    id: 5,
+    name: "Tomato",
+    category: "Vegetable",
+    market: "New Market",
+    price: 55,
+    image: "https://source.unsplash.com/600x400/?tomato",
+  },
+  {
+    id: 6,
+    name: "Carrot",
+    category: "Vegetable",
+    market: "Local Market",
+    price: 40,
+    image: "https://source.unsplash.com/600x400/?carrot",
+  },
+  {
+    id: 7,
+    name: "Cabbage",
+    category: "Vegetable",
+    market: "Karwan Bazar",
+    price: 35,
+    image: "https://source.unsplash.com/600x400/?cabbage",
+  },
+  {
+    id: 8,
+    name: "Rohu Fish",
+    category: "Fish",
+    market: "New Market",
+    price: 450,
+    image: "https://source.unsplash.com/600x400/?rohu-fish",
+  },
+  {
+    id: 9,
+    name: "Brinjal",
+    category: "Vegetable",
+    market: "Local Market",
+    price: 65,
+    image: "https://source.unsplash.com/600x400/?eggplant",
+  },
+  {
+    id: 10,
+    name: "Pumpkin",
+    category: "Vegetable",
+    market: "Karwan Bazar",
+    price: 30,
+    image: "https://source.unsplash.com/600x400/?pumpkin",
   },
 ];
 
@@ -35,15 +88,6 @@ const Products = () => {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
   const [market, setMarket] = useState("All");
-  const [wishlist, setWishlist] = useState([]);
-
-  const toggleWishlist = (id) => {
-    setWishlist(
-      wishlist.includes(id)
-        ? wishlist.filter((item) => item !== id)
-        : [...wishlist, id]
-    );
-  };
 
   const filteredProducts = productData.filter((product) => {
     return (
@@ -54,19 +98,22 @@ const Products = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-100 px-6 py-10">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-gray-100 py-12 px-6">
+      <div className="max-w-7xl mx-auto">
 
-        <h1 className="text-3xl font-bold mb-2">All Products</h1>
-        <p className="text-gray-500 mb-6">
-          Browse daily market prices of fresh products
-        </p>
+        {/* Header */}
+        <div className="mb-10">
+          <h1 className="text-4xl font-bold text-gray-800">All Products</h1>
+          <p className="text-gray-500 mt-2">
+            Browse daily market prices of fresh products
+          </p>
+        </div>
 
         {/* Filters */}
-        <div className="flex flex-col md:flex-row gap-4 mb-8">
+        <div className="bg-white p-6 rounded-xl shadow-sm mb-10 flex flex-col md:flex-row gap-4">
           <select
             onChange={(e) => setCategory(e.target.value)}
-            className="border rounded-lg px-4 py-2"
+            className="border border-gray-300 px-4 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
           >
             <option value="All">All Categories</option>
             <option value="Vegetable">Vegetable</option>
@@ -75,7 +122,7 @@ const Products = () => {
 
           <select
             onChange={(e) => setMarket(e.target.value)}
-            className="border rounded-lg px-4 py-2"
+            className="border border-gray-300 px-4 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
           >
             <option value="All">All Markets</option>
             <option value="Karwan Bazar">Karwan Bazar</option>
@@ -87,52 +134,66 @@ const Products = () => {
             type="text"
             placeholder="Search product..."
             onChange={(e) => setSearch(e.target.value)}
-            className="flex-1 border rounded-lg px-4 py-2"
+            className="flex-1 border border-gray-300 px-4 py-2 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
           />
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden"
+              className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden group"
             >
-              <div className="relative">
+              <div className="overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="h-48 w-full object-cover"
+                  className="h-48 w-full object-cover group-hover:scale-105 transition duration-300"
                 />
-
-                <button
-                  onClick={() => toggleWishlist(product.id)}
-                  className="absolute top-3 right-3 text-2xl"
-                >
-                  {wishlist.includes(product.id) ? "❤️" : "🤍"}
-                </button>
               </div>
 
-              <div className="p-4">
-                <h3 className="text-lg font-semibold">{product.name}</h3>
+              <div className="p-5">
+                <h3 className="text-lg font-semibold text-gray-800">
+                  {product.name}
+                </h3>
                 <p className="text-sm text-gray-500">{product.market}</p>
 
-                <p className="text-green-600 font-bold mt-2">
-                  ৳{product.price} / kg
-                </p>
-
-                <p className="text-yellow-500 text-sm">
-                  ⭐ {product.rating}
+                <p className="text-green-600 text-xl font-bold mt-3">
+                  ৳{product.price}
+                  <span className="text-sm font-medium text-gray-500">
+                    {" "}
+                    / kg
+                  </span>
                 </p>
 
                 <Link to={`/product/${product.id}`}>
-                  <button className="mt-4 w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg transition">
+                  <button className="mt-5 w-full bg-green-500 hover:bg-green-600 text-white py-2.5 rounded-lg transition duration-300">
                     View Details
                   </button>
                 </Link>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Pagination */}
+        <div className="flex justify-center mt-12 space-x-2">
+          <button className="px-4 py-2 bg-white border rounded-lg hover:bg-gray-100">
+            Prev
+          </button>
+          <button className="px-4 py-2 bg-green-500 text-white rounded-lg">
+            1
+          </button>
+          <button className="px-4 py-2 bg-white border rounded-lg hover:bg-gray-100">
+            2
+          </button>
+          <button className="px-4 py-2 bg-white border rounded-lg hover:bg-gray-100">
+            3
+          </button>
+          <button className="px-4 py-2 bg-white border rounded-lg hover:bg-gray-100">
+            Next
+          </button>
         </div>
 
       </div>
