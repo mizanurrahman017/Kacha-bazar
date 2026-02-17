@@ -49,14 +49,14 @@ const Item = () => {
       name: "Green Chili",
       price: 80,
       market: "Shyambazar",
-      img: "https://images.unsplash.com/photo-1582281298055-e25b84a30b0b",
+      img: "/chili.avif",
     },
     {
       id: 6,
       name: "Fresh Carrot",
       price: 50,
       market: "Farm Market",
-      img: "https://images.unsplash.com/photo-1582515073490-dc7e6b6fdb14",
+      img: "/carrot.jpg",
     },
   ];
 
