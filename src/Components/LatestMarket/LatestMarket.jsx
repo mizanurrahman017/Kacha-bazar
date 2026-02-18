@@ -34,38 +34,38 @@ const LatestMarket = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      
+    <div className="max-w-7xl mx-auto px-4 py-10">
+
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold leading-snug">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 leading-snug">
             Latest Market News & Alerts
           </h1>
-          <p className="text-gray-500 mt-1 text-sm md:text-base">
+          <p className="text-gray-600 mt-1 text-sm md:text-base">
             Stay updated with daily market changes
           </p>
         </div>
 
-        <FaBell className="text-green-600 text-xl md:text-2xl cursor-pointer hover:scale-110 transition" />
+        <FaBell className="text-green-600 text-2xl cursor-pointer hover:scale-110 transition" />
       </div>
 
       {/* News Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {news.map((item) => (
           <div
             key={item.id}
-            className="border rounded-xl p-5 bg-white hover:shadow-lg transition duration-300"
+            className="border border-gray-200 rounded-2xl p-6 bg-white shadow-sm hover:shadow-xl transition duration-300"
           >
-            <h2 className="font-semibold text-base md:text-lg mb-2 break-words leading-snug">
+            <h2 className="font-semibold text-gray-900 text-base md:text-lg mb-3 leading-snug">
               {item.title}
             </h2>
 
-            <p className="text-gray-600 text-sm mb-4">
+            <p className="text-gray-700 text-sm mb-4 leading-relaxed">
               {item.description}
             </p>
 
-            <span className="text-gray-400 text-xs">
+            <span className="text-gray-500 text-xs">
               {item.time}
             </span>
           </div>

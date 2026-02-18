@@ -37,10 +37,10 @@ const FreshFruits = () => {
       <div className="max-w-6xl mx-auto">
 
         {/* Title Section */}
-        <h1 className="text-4xl font-bold text-center mb-2">
+        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-2">
           🍎 Fresh Fruits
         </h1>
-        <p className="text-center text-gray-600 mb-10">
+        <p className="text-center text-gray-700 mb-10 text-sm sm:text-base">
           Seasonal and imported fruit prices
         </p>
 
@@ -58,13 +58,16 @@ const FreshFruits = () => {
               />
 
               <div className="p-4 text-center">
-                <h2 className="text-xl font-semibold mb-2">
+                {/* Fruit Name */}
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 break-words">
                   {fruit.name}
                 </h2>
-                <p className="text-gray-500">{fruit.market}</p>
-                <p className="text-green-600 font-bold mt-2">
-                  {fruit.price}
-                </p>
+
+                {/* Market */}
+                <p className="text-gray-700 text-sm sm:text-base">{fruit.market}</p>
+
+                {/* Price */}
+                <p className="text-green-600 font-bold mt-2">{fruit.price}</p>
 
                 {/* Add to Cart Button */}
                 <button

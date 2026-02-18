@@ -70,14 +70,14 @@ const Ratings = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-6">
-      <div className="w-full max-w-3xl bg-white shadow-lg rounded-xl p-5 md:p-8">
+      <div className="w-full max-w-3xl bg-white shadow-lg rounded-2xl p-5 md:p-8">
 
         {/* Responsive Heading */}
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-2 break-words">
+        <h2 className="text-2xl sm:text-2xl md:text-3xl font-bold text-gray-900 text-center mb-2 break-words">
           Community Ratings & Reviews
         </h2>
 
-        <p className="text-center text-gray-500 mb-6 text-sm md:text-base">
+        <p className="text-center text-gray-700 mb-6 text-sm md:text-base">
           ⭐ {averageRating} ({reviews.length} reviews)
         </p>
 
@@ -85,7 +85,7 @@ const Ratings = () => {
         <div className="mb-6">
           {[5,4,3,2,1].map((star) => (
             <div key={star} className="flex items-center mb-1 text-sm">
-              <span className="w-8">{star}★</span>
+              <span className="w-8 font-medium text-gray-800">{star}★</span>
               <div className="flex-1 bg-gray-200 h-2 rounded mx-2">
                 <div
                   className="bg-yellow-400 h-2 rounded"
@@ -127,7 +127,7 @@ const Ratings = () => {
           })}
         </div>
 
-        {/* Review Textarea with Clear Border */}
+        {/* Review Textarea */}
         <textarea
           placeholder="Write your feedback..."
           value={review}
@@ -151,7 +151,7 @@ const Ratings = () => {
               className="border rounded-lg p-4 shadow-sm bg-gray-50"
             >
               <div className="flex justify-between items-center">
-                <h4 className="font-semibold break-words">{item.name}</h4>
+                <h4 className="font-semibold text-gray-900 break-words">{item.name}</h4>
                 <div className="text-yellow-400 text-sm">
                   {"★".repeat(item.rating)}
                   <span className="text-gray-300">
