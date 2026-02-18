@@ -10,11 +10,10 @@ const Item = () => {
 
     if (!current) return;
 
-    if (direction === "left") {
-      current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-    } else {
-      current.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    }
+    current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
   };
 
   const items = [
@@ -66,10 +65,10 @@ const Item = () => {
     <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 relative">
 
       {/* Title */}
-      <h1 className="text-2xl md:text-3xl font-bold mb-2">
+      <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
         Featured & Popular Items
       </h1>
-      <p className="text-gray-500 mb-8 text-sm md:text-base">
+      <p className="text-gray-600 mb-8 text-sm md:text-base">
         Most viewed and frequently updated market products
       </p>
 
@@ -97,17 +96,7 @@ const Item = () => {
         {items.map((item) => (
           <div
             key={item.id}
-            className="
-              w-[80%] 
-              sm:w-[45%] 
-              lg:w-[23%] 
-              flex-shrink-0 
-              bg-white 
-              rounded-2xl 
-              shadow-md 
-              hover:shadow-xl 
-              transition duration-300
-            "
+            className="w-[80%] sm:w-[45%] lg:w-[23%] flex-shrink-0 bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300"
           >
             <img
               src={item.img}
@@ -116,7 +105,9 @@ const Item = () => {
             />
 
             <div className="p-4 md:p-5">
-              <h2 className="text-base md:text-lg font-semibold mb-2">
+
+              {/* 🔥 FIX: Added proper text color */}
+              <h2 className="text-base md:text-lg font-semibold text-gray-900 mb-2">
                 {item.name}
               </h2>
 
@@ -128,9 +119,10 @@ const Item = () => {
                 {item.market}
               </span>
 
-              <button className="w-full border border-green-600 text-green-600 py-2 rounded-lg text-sm md:text-base hover:bg-green-600 hover:text-white transition">
+              <button className="w-full border border-green-600 text-green-600 py-2 rounded-lg text-sm md:text-base hover:bg-green-600 hover:text-white transition duration-300">
                 View Details
               </button>
+
             </div>
           </div>
         ))}

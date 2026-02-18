@@ -33,7 +33,7 @@ const Fish = ({ addToCart }) => {
       <div className="max-w-6xl mx-auto">
 
         {/* Title */}
-        <h1 className="text-4xl font-bold text-center mb-2">
+        <h1 className="text-4xl font-bold text-center text-gray-800 mb-2">
           🐟 Fish & Meat
         </h1>
         <p className="text-center text-gray-600 mb-10">
@@ -45,7 +45,7 @@ const Fish = ({ addToCart }) => {
           {items.map((item, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition"
+              className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300"
             >
               <img
                 src={item.image}
@@ -54,17 +54,22 @@ const Fish = ({ addToCart }) => {
               />
 
               <div className="p-4 text-center">
-                <h2 className="text-xl font-semibold mb-2">
+                {/* 🔥 Important Fix: Added text-gray-800 */}
+                <h2 className="text-xl font-semibold text-gray-800 mb-2">
                   {item.name}
                 </h2>
-                <p className="text-gray-500">{item.market}</p>
+
+                <p className="text-gray-500">
+                  {item.market}
+                </p>
+
                 <p className="text-red-600 font-bold mt-2">
                   {item.price}
                 </p>
 
                 <button
                   onClick={() => addToCart && addToCart(item)}
-                  className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-red-700 transition"
+                  className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition duration-300"
                 >
                   Add to Cart 🛒
                 </button>
