@@ -26,11 +26,16 @@ const Navbar = () => {
     await signOut(auth);
   };
 
+  const navLinkStyle = ({ isActive }) =>
+    isActive
+      ? "text-green-600 font-semibold"
+      : "text-gray-800 hover:text-green-600 transition";
+
   return (
-    <div className="w-full">
+    <div className="w-full relative z-50">
 
       {/* Top Bar */}
-      <div className="bg-slate-900 text-white text-xs md:text-sm py-2 px-4 md:px-6 flex justify-between">
+      <div className="bg-slate-900 text-white text-xs md:text-sm py-2 px-4 md:px-6 flex justify-between items-center">
         <p className="hidden md:block">
           We are available 24/7, Need help? Call Us:
           <span className="text-green-400 font-semibold ml-2">
@@ -39,21 +44,24 @@ const Navbar = () => {
         </p>
 
         <div className="space-x-4 hidden md:flex">
-          <NavLink to="/contact">Contact Us</NavLink>
-          <NavLink to="/account">My Account</NavLink>
+          <NavLink to="/contact" className="hover:text-green-400">
+            Contact Us
+          </NavLink>
+          <NavLink to="/account" className="hover:text-green-400">
+            My Account
+          </NavLink>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenu(!mobileMenu)}
-          className="md:hidden"
+          className="md:hidden text-white"
         >
           {mobileMenu ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {/* Main Navbar */}
-      <div className="bg-gray-100 px-4 md:px-6 py-4 flex items-center justify-between">
+      <div className="bg-white px-4 md:px-6 py-4 flex items-center justify-between shadow-sm">
 
         {/* Logo */}
         <NavLink to="/" className="text-xl md:text-2xl font-bold text-green-600">
@@ -62,14 +70,14 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-6 font-medium relative">
-          <NavLink to="/" className="hover:text-green-600">
+          <NavLink to="/" className={navLinkStyle}>
             Home
           </NavLink>
 
           <div className="relative">
             <button
               onClick={() => setOpen(!open)}
-              className="flex items-center gap-1 hover:text-green-600"
+              className="flex items-center gap-1 text-gray-800 hover:text-green-600 transition"
             >
               Categories <ChevronDown size={16} />
             </button>
@@ -92,17 +100,17 @@ const Navbar = () => {
             )}
           </div>
 
-          <NavLink to="/products" className="hover:text-green-600">
+          <NavLink to="/products" className={navLinkStyle}>
             Products
           </NavLink>
         </div>
 
         {/* Desktop Search */}
-        <div className="hidden md:flex items-center bg-white rounded-full px-4 py-2 w-80 shadow-sm">
+        <div className="hidden md:flex items-center bg-gray-100 rounded-full px-4 py-2 w-80">
           <input
             type="text"
             placeholder="Search products..."
-            className="bg-transparent outline-none flex-1 text-sm"
+            className="bg-transparent outline-none flex-1 text-sm text-gray-700"
           />
           <Search size={18} className="text-gray-500" />
         </div>
@@ -110,26 +118,24 @@ const Navbar = () => {
         {/* Right Side */}
         <div className="flex items-center space-x-4">
 
-          {/* Cart */}
-          <div className="relative">
-            <ShoppingCart size={22} />
+          <div className="relative cursor-pointer">
+            <ShoppingCart size={22} className="text-gray-800" />
             <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-1 rounded-full">
               0
             </span>
           </div>
 
-          {/* User */}
           {user ? (
             <button
               onClick={handleLogout}
-              className="text-sm bg-red-500 text-white px-3 py-1 rounded hidden md:block"
+              className="text-sm bg-red-500 text-white px-3 py-1 rounded hidden md:block hover:bg-red-600 transition"
             >
               Logout
             </button>
           ) : (
             <NavLink
               to="/login"
-              className="hidden md:block hover:text-green-600"
+              className="hidden md:block text-gray-800 hover:text-green-600 transition"
             >
               Login
             </NavLink>
@@ -137,55 +143,62 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* 🔥 Mobile Menu Dropdown */}
+      {/* ✅ Mobile Menu */}
       {mobileMenu && (
-        <div className="md:hidden bg-white shadow-md px-4 py-4 space-y-4 font-medium">
+        <div className="md:hidden bg-white text-gray-800 shadow-md px-4 py-4 flex flex-col gap-3 font-medium">
 
-          <NavLink to="/" onClick={() => setMobileMenu(false)}>
+          <NavLink to="/" onClick={() => setMobileMenu(false)}
+            className="py-2 px-3 rounded-md hover:bg-gray-100 transition">
             Home
           </NavLink>
 
-          <NavLink to="/products" onClick={() => setMobileMenu(false)}>
+          <NavLink to="/products" onClick={() => setMobileMenu(false)}
+            className="py-2 px-3 rounded-md hover:bg-gray-100 transition">
             Products
           </NavLink>
 
-          <NavLink to="/category/fruits" onClick={() => setMobileMenu(false)}>
+          <NavLink to="/category/fruits" onClick={() => setMobileMenu(false)}
+            className="py-2 px-3 rounded-md hover:bg-gray-100 transition">
             Fresh Fruits
           </NavLink>
 
-          <NavLink to="/category/vegetables" onClick={() => setMobileMenu(false)}>
+          <NavLink to="/category/vegetables" onClick={() => setMobileMenu(false)}
+            className="py-2 px-3 rounded-md hover:bg-gray-100 transition">
             Vegetables
           </NavLink>
 
-          <NavLink to="/category/fish" onClick={() => setMobileMenu(false)}>
+          <NavLink to="/category/fish" onClick={() => setMobileMenu(false)}
+            className="py-2 px-3 rounded-md hover:bg-gray-100 transition">
             Fish & Meat
           </NavLink>
 
-          <NavLink to="/category/dairy" onClick={() => setMobileMenu(false)}>
+          <NavLink to="/category/dairy" onClick={() => setMobileMenu(false)}
+            className="py-2 px-3 rounded-md hover:bg-gray-100 transition">
             Dairy & Bakery
           </NavLink>
 
           {/* Mobile Search */}
-          <div className="flex items-center bg-gray-100 rounded-full px-4 py-2">
+          <div className="flex items-center bg-gray-100 rounded-full px-4 py-2 mt-2">
             <input
               type="text"
               placeholder="Search..."
-              className="bg-transparent outline-none flex-1 text-sm"
+              className="bg-transparent outline-none flex-1 text-sm text-gray-700"
             />
-            <Search size={18} />
+            <Search size={18} className="text-gray-500" />
           </div>
 
           {user ? (
             <button
               onClick={handleLogout}
-              className="w-full bg-red-500 text-white py-2 rounded"
+              className="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600 transition mt-2"
             >
               Logout
             </button>
           ) : (
             <NavLink
               to="/login"
-              className="block text-center bg-green-500 text-white py-2 rounded"
+              onClick={() => setMobileMenu(false)}
+              className="block text-center bg-green-500 text-white py-2 rounded hover:bg-green-600 transition mt-2"
             >
               Login
             </NavLink>
