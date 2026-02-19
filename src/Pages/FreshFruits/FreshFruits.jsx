@@ -5,28 +5,28 @@ const FreshFruits = () => {
     {
       id: 101,
       name: "Apple",
-      image: "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce",
+      img: "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce",
       market: "KachaBazar Market",
       price: 220,
     },
     {
       id: 102,
       name: "Banana",
-      image: "/banana.jpg",
+      img: "/banana.jpg",
       market: "KachaBazar Market",
       price: 60,
     },
     {
       id: 103,
       name: "Orange",
-      image: "/orange.jpg",
+      img: "/orange.jpg",
       market: "KachaBazar Market",
       price: 180,
     },
     {
       id: 104,
       name: "Mango",
-      image: "https://images.unsplash.com/photo-1591073113125-e46713c829ed",
+      img: "https://images.unsplash.com/photo-1591073113125-e46713c829ed",
       market: "KachaBazar Market",
       price: 150,
     },
@@ -55,7 +55,7 @@ const FreshFruits = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {fruits.map((item) => (
             <div key={item.id} className="bg-white rounded-2xl shadow-md overflow-hidden">
-              <img src={item.image} alt={item.name} className="w-full h-48 object-cover" />
+              <img src={item.img} alt={item.name} className="w-full h-48 object-cover" />
               <div className="p-4 text-center">
                 <h2 className="font-semibold">{item.name}</h2>
                 <p className="text-gray-500">{item.market}</p>

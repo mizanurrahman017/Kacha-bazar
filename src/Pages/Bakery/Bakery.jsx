@@ -2,10 +2,10 @@ import React from "react";
 
 const Bakery = () => {
   const items = [
-    { id: 401, name: "Fresh Milk", image: "/milk.webp", market: "KachaBazar Market", price: 90 },
-    { id: 402, name: "Eggs (Dozen)", image: "https://images.unsplash.com/photo-1587486913049-53fc88980cfc", market: "KachaBazar Market", price: 140 },
-    { id: 403, name: "White Bread", image: "/whitebread.webp", market: "KachaBazar Market", price: 60 },
-    { id: 404, name: "Butter", image: "/Butter.webp", market: "KachaBazar Market", price: 180 },
+    { id: 401, name: "Fresh Milk", img: "/milk.webp", market: "KachaBazar Market", price: 90 },
+    { id: 402, name: "Eggs (Dozen)", img: "https://images.unsplash.com/photo-1587486913049-53fc88980cfc", market: "KachaBazar Market", price: 140 },
+    { id: 403, name: "White Bread", img: "/whitebread.webp", market: "KachaBazar Market", price: 60 },
+    { id: 404, name: "Butter", img: "/Butter.webp", market: "KachaBazar Market", price: 180 },
   ];
 
   const handleAddToCart = (item) => {
@@ -28,7 +28,7 @@ const Bakery = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {items.map((item) => (
             <div key={item.id} className="bg-white rounded-2xl shadow-md overflow-hidden">
-              <img src={item.image} alt={item.name} className="w-full h-48 object-cover" />
+              <img src={item.img} alt={item.name} className="w-full h-48 object-cover" />
               <div className="p-4 text-center">
                 <h2 className="font-semibold">{item.name}</h2>
                 <p className="text-gray-500">{item.market}</p>
