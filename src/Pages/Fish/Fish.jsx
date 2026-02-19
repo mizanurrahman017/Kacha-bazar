@@ -1,32 +1,58 @@
 import React from "react";
 
-const Fish = ({ addToCart }) => {
+const Fish = () => {
   const items = [
     {
+      id: 1,
       name: "Hilsa Fish",
       image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d",
       market: "KachaBazar Market",
-      price: "৳1200 / kg",
+      price: 1200,
     },
     {
+      id: 2,
       name: "Rohu Fish",
       image: "/Rohu.jpg",
       market: "KachaBazar Market",
-      price: "৳350 / kg",
+      price: 350,
     },
     {
+      id: 3,
       name: "Chicken",
       image: "/chicken.webp",
       market: "KachaBazar Market",
-      price: "৳220 / kg",
+      price: 220,
     },
     {
+      id: 4,
       name: "Beef",
       image: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f",
       market: "KachaBazar Market",
-      price: "৳750 / kg",
+      price: 750,
     },
   ];
+
+  const handleAddToCart = (item) => {
+    // Load cart from localStorage
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Check if item already exists
+    const existing = cart.find((i) => i.id === item.id);
+
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push({ ...item, quantity: 1 });
+    }
+
+    // Save cart back to localStorage
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Notify Navbar to update count
+    window.dispatchEvent(new Event("storage"));
+
+    alert(`${item.name} added to cart 🛒`);
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-6">
@@ -42,9 +68,9 @@ const Fish = ({ addToCart }) => {
 
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {items.map((item, index) => (
+          {items.map((item) => (
             <div
-              key={index}
+              key={item.id}
               className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300"
             >
               <img
@@ -54,21 +80,16 @@ const Fish = ({ addToCart }) => {
               />
 
               <div className="p-4 text-center">
-                {/* 🔥 Important Fix: Added text-gray-800 */}
                 <h2 className="text-xl font-semibold text-gray-800 mb-2">
                   {item.name}
                 </h2>
 
-                <p className="text-gray-500">
-                  {item.market}
-                </p>
+                <p className="text-gray-500">{item.market}</p>
 
-                <p className="text-red-600 font-bold mt-2">
-                  {item.price}
-                </p>
+                <p className="text-red-600 font-bold mt-2">৳{item.price}</p>
 
                 <button
-                  onClick={() => addToCart && addToCart(item)}
+                  onClick={() => handleAddToCart(item)}
                   className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition duration-300"
                 >
                   Add to Cart 🛒
