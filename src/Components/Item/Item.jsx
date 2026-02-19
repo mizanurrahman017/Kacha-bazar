@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { NavLink } from "react-router";
 
 const Item = () => {
   const scrollRef = useRef(null);
@@ -63,7 +64,7 @@ const Item = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 relative">
-
+      
       {/* Title */}
       <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
         Featured & Popular Items
@@ -105,8 +106,6 @@ const Item = () => {
             />
 
             <div className="p-4 md:p-5">
-
-              {/* 🔥 FIX: Added proper text color */}
               <h2 className="text-base md:text-lg font-semibold text-gray-900 mb-2">
                 {item.name}
               </h2>
@@ -119,9 +118,13 @@ const Item = () => {
                 {item.market}
               </span>
 
-              <button className="w-full border border-green-600 text-green-600 py-2 rounded-lg text-sm md:text-base hover:bg-green-600 hover:text-white transition duration-300">
+              {/* NavLink Added Here */}
+              <NavLink
+                to={`/item/${item.id}`}
+                className="block text-center w-full border border-green-600 text-green-600 py-2 rounded-lg text-sm md:text-base hover:bg-green-600 hover:text-white transition duration-300"
+              >
                 View Details
-              </button>
+              </NavLink>
 
             </div>
           </div>

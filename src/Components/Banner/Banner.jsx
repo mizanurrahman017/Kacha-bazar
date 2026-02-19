@@ -4,7 +4,7 @@ const slides = [
   {
     id: 1,
     image: "https://images.unsplash.com/photo-1542838132-92c53300491e",
-    title: "Live KachaBazer Price Tracker",
+    title: "Live KachaBazar Price Tracker",
     desc: "Check today’s latest market prices instantly",
   },
   {

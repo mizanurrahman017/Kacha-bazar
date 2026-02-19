@@ -12,6 +12,9 @@ import Fish from '../Pages/Fish/Fish';
 import Bakery from '../Pages/Bakery/Bakery';
 import Register from '../Pages/Register/Register';
 import Login from '../Pages/Login/Login';
+import ViewDetails from '../Pages/ViewDetails/ViewDetails';
+import Cart from '../Pages/Cart/Cart';
+import ProductsDetails from '../Pages/ProductsDetails/ProductsDetails';
 
 
 
@@ -64,6 +67,18 @@ export const router = createBrowserRouter([
       {
         path:"login",
         element:<Login></Login>
+      },
+      {
+        path:"/item/:id",
+        element:<ViewDetails></ViewDetails>
+      },
+      {
+        path:"/cart",
+        element:<Cart></Cart>
+      },
+      {
+        path:"/product/:id",
+        element:<ProductsDetails></ProductsDetails>
       }
        
     ]
